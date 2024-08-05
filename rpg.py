@@ -1,4 +1,4 @@
-print("hello monsters")
+  print("hello monsters")
 string = input("would you like to say something?")
 
 print(string)
@@ -12,14 +12,16 @@ atk = 3
 
 def save():
     list = [
-        name
-        str(hp)
+        name,
+        str(hp),
         str(atk)
     ]
     f = open("load.txt", "w")
 
     for item in list:
         f.write(item + "\n")
+    f.close
+    
 while run:
     while menu:
         print("1, New Game")
@@ -32,11 +34,37 @@ while run:
         rules = False
         choice = ""
         input(".... ")
+        menu = False
+        play = True
     else: 
         choice = input("c..")
-    if choice == "1"
+    if choice == "1":
         name = input("what will be your name?")
         menu = False
         play = True
     elif choice == "2":
-        pass    
+        f = open("load.text" , "r")
+        load_list = f.readlines()
+        name = load_list[0][:-1]
+        hp = load_list[1][:-1]
+        atk = load_list[2][:-1]
+        # so ur here again. / ("0") / |___| 
+        print("*goes into rage mode breaks pc*")
+        print("ok then.... " + name + " lets continue.")
+        input(".... ")
+        
+        
+    elif choice == "3":
+        rules = True 
+    elif choice == "4":
+        quit()
+        
+    while play:
+        save()         #autosaves the game
+        
+        dest = input("-> ")
+        
+        if dest == "0":
+            play = False
+            menu = True
+            save()
